@@ -95,7 +95,7 @@ body {
 
   .header img {
     width: 50px;
-   
+
   }
 
   .header .container .name {
@@ -296,8 +296,577 @@ body {
     color: var(--secondary-color);
   }
 
- 
+
   .time {
       margin-bottom: 0px;
+  }
+}
+:root {
+  --main-color: #ce0000;
+  --secondary-color: #f8f8f8;
+  --ramadan-gold: #ffd700;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(180deg, #8b0000 0%, #ce0000 50%, #8b0000 100%);
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* رمضان كريم كبيرة في الخلفية */
+body::before {
+  content: "رمضان كريم";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(255, 215, 0, 0.08);
+  z-index: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* فانوس يسار */
+.lantern-left {
+  position: fixed;
+  top: 10%;
+  left: 2%;
+  font-size: 55px;
+  animation: swing-right 4s infinite ease-in-out;
+  filter: drop-shadow(0 0 15px #ffd700);
+  z-index: 9999;
+}
+
+.lantern-left::before {
+  content: "🏮";
+}
+
+/* فانوس يمين */
+.lantern-right {
+  position: fixed;
+  top: 10%;
+  right: 2%;
+  font-size: 55px;
+  animation: swing-left 4s infinite ease-in-out;
+  filter: drop-shadow(0 0 15px #ffd700);
+  z-index: 9999;
+}
+
+.lantern-right::before {
+  content: "🏮";
+}
+
+/* فانوس يسار أسفل */
+.lantern-left-bottom {
+  position: fixed;
+  top: 50%;
+  left: 1%;
+  font-size: 50px;
+  animation: swing-right 3.5s infinite ease-in-out;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
+  z-index: 1;
+}
+
+.lantern-left-bottom::before {
+  content: "🏮";
+}
+
+/* فانوس يمين أسفل */
+.lantern-right-bottom {
+  position: fixed;
+  top: 50%;
+  right: 1%;
+  font-size: 50px;
+  animation: swing-left 3.5s infinite ease-in-out;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
+  z-index: 1;
+}
+
+.lantern-right-bottom::before {
+  content: "🏮";
+}
+
+@keyframes swing-right {
+  0%, 100% {
+    transform: rotate(-15deg) translateY(0);
+  }
+  50% {
+    transform: rotate(15deg) translateY(-10px);
+  }
+}
+
+@keyframes swing-left {
+  0%, 100% {
+    transform: rotate(15deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-15deg) translateY(-10px);
+  }
+}
+
+/* أضواء رمضانية في الأعلى */
+.ramadan-lights {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  pointer-events: none;
+  z-index: 9998;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.light {
+  font-size: 30px;
+  display: inline-block;
+}
+
+.light:nth-child(1) {
+  animation: blink1 1.5s infinite;
+  filter: drop-shadow(0 0 10px #ff0000);
+}
+
+.light:nth-child(2) {
+  animation: blink2 1.5s infinite;
+  filter: drop-shadow(0 0 10px #ffd700);
+}
+
+.light:nth-child(3) {
+  animation: blink1 1.5s infinite 0.5s;
+  filter: drop-shadow(0 0 10px #00ff00);
+}
+
+.light:nth-child(4) {
+  animation: blink2 1.5s infinite 0.5s;
+  filter: drop-shadow(0 0 10px #ffd700);
+}
+
+.light:nth-child(5) {
+  animation: blink1 1.5s infinite 1s;
+  filter: drop-shadow(0 0 10px #ff0000);
+}
+
+.light::before {
+  content: "💡";
+}
+
+@keyframes blink1 {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.9); }
+}
+
+@keyframes blink2 {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 500px) {
+  body::before {
+    font-size: 60px;
+  }
+
+  .lantern-left,
+  .lantern-right {
+    font-size: 40px;
+  }
+
+  .lantern-left {
+    left: 1%;
+    top: 8%;
+  }
+
+  .lantern-right {
+    right: 1%;
+    top: 8%;
+  }
+
+  .lantern-left-bottom,
+  .lantern-right-bottom {
+    font-size: 35px;
+  }
+
+  .ramadan-lights {
+    gap: 20px;
+    height: 50px;
+  }
+
+  .light {
+    font-size: 22px;
+  }
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* start header */
+.header {
+  background: linear-gradient(135deg, #ffffff 0%, #fff9e6 100%);
+  font-weight: 900;
+  position: relative;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  margin-top: 25px;
+  border-radius: 15px;
+}
+
+/* رمضان كريم على الهيدر */
+.header::before {
+  content: "🌙 رمضان كريم 🌙";
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #ce0000, #ffd9008d, #ce0000);
+  color: white;
+  padding: 8px 30px;
+  border-radius: 25px;
+  font-size: 35px;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+  animation: glow-text 2s infinite alternate;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+@keyframes glow-text {
+  from {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.622);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(255, 217, 0, 0.559);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+  }
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 900;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.header img {
+  width: 150px;
+  margin: 0px;
+  padding: 0px;
+  animation: thebest 2s infinite;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
+  border-radius: 15px;
+}
+
+@keyframes thebest {
+  0% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 20px 0;
+    filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.9));
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+
+.header .container .name {
+  color: var(--main-color);
+  font-weight: 900;
+  font-size: x-large;
+  text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.4);
+}
+
+
+@media (max-width: 768px) {
+  .header {
+    margin-top: 20px;
+    padding: 10px 0;
+    height: 100px;
+  }
+
+  .header::before {
+    font-size: 20px;
+    padding: 5px 15px;
+    top: 5px;
+  }
+
+  .header img {
+    width: 60px;
+  }
+
+  .header .container .name {
+    font-size: 16px;
+  }
+}
+
+/* start profile */
+.profile {
+  text-align: center;
+  color: #ffffff;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  margin-top: 20px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+/* هلال ونجوم حول الصورة */
+.profile::before {
+  content: "🌙";
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-150px);
+  font-size: 45px;
+  animation: rotate-moon 10s infinite linear;
+  filter: drop-shadow(0 0 15px #ffd700);
+}
+
+.profile::after {
+  content: "⭐";
+  position: absolute;
+  top: 15px;
+  right: 50%;
+  transform: translateX(150px);
+  font-size: 40px;
+  animation: twinkle-star 2s infinite;
+  filter: drop-shadow(0 0 15px #ffd700);
+}
+
+@keyframes rotate-moon {
+  0% { transform: translateX(-150px) rotate(0deg); }
+  100% { transform: translateX(-150px) rotate(360deg); }
+}
+
+@keyframes twinkle-star {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(150px) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(150px) scale(1.3);
+  }
+}
+
+.profile .image img {
+  width: 200px;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.9);
+  animation: pulse-glow 3s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7),
+                0 0 50px rgba(206, 0, 0, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(255, 215, 0, 1),
+                0 0 70px rgba(206, 0, 0, 0.7);
+    transform: scale(1.03);
+  }
+}
+
+.profile .text {
+  padding-top: 15px;
+  font-size: 22px;
+  line-height: 1.8;
+  font-weight: bolder;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+}
+
+.profile .text p {
+  font-weight: bolder;
+  margin-top: 15px;
+  font-size: 24px;
+}
+
+@media (max-width: 500px) {
+  .profile::before {
+    font-size: 32px;
+    transform: translateX(-90px);
+  }
+  .profile::after {
+    font-size: 28px;
+    transform: translateX(90px);
+  }
+}
+
+.profile .text span {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+/* start contant */
+.contant {
+  padding-top: 50px;
+  text-align: center;
+  padding-bottom: 48px;
+  position: relative;
+}
+
+.contant a {
+  width: 100%;
+  font-size: 25px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bolder;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.contant .col span {
+  display: none;
+}
+
+.contant .col {
+  height: 55px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #ffd700 2px solid;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.4);
+  position: relative;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+  transition: all 0.5s ease;
+}
+
+/* إضاءة على الأزرار */
+.contant .col::before {
+  content: "✨";
+  position: absolute;
+  left: 25px;
+  font-size: 20px;
+  animation: sparkle-left 2s infinite;
+}
+
+.contant .col::after {
+  content: "✨";
+  position: absolute;
+  right: 25px;
+  font-size: 20px;
+  animation: sparkle-right 2s infinite;
+}
+
+@keyframes sparkle-left {
+  0%, 100% { opacity: 0; transform: translateX(0) scale(1); }
+  50% { opacity: 1; transform: translateX(-5px) scale(1.2); }
+}
+
+@keyframes sparkle-right {
+  0%, 100% { opacity: 0; transform: translateX(0) scale(1); }
+  50% { opacity: 1; transform: translateX(5px) scale(1.2); }
+}
+
+.contant .col:hover span {
+  display: inline;
+  color: #000;
+}
+
+.contant .col:hover {
+  height: 55px;
+  width: 85%;
+  border: #ffd700 3px solid;
+  background: linear-gradient(135deg, #ffffff, #fffacd);
+  color: #000;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 1),
+              0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.contant .col:hover a {
+  color: #ce0000;
+  font-weight: 900;
+}
+
+.contant .col:hover i {
+  color: #ce0000;
+  filter: drop-shadow(0 0 8px #ffd700);
+  transform: scale(1.2);
+}
+
+@media (min-width: 500px) {
+  .contant {
+    padding-top: 40px;
+    text-align: center;
+    padding-bottom: 60px;
+  }
+
+  .contant .col {
+    width: 70%;
+    margin: auto;
+  }
+
+  .contant a {
+    font-size: 22px;
+  }
+
+  .contant .col:hover {
+    width: 78%;
+  }
+}
+
+@media (max-width: 500px) {
+  .contant {
+    padding-left: 0px;
+    width: 100%;
+    padding: 30px 15px;
+    text-align: center;
+    padding-bottom: 80px;
+  }
+
+  .contant .col {
+    height: 52px;
+    width: 100%;
+  }
+
+  .contant .col::before {
+    left: 15px;
+    font-size: 16px;
+  }
+
+  .contant .col::after {
+    right: 15px;
+    font-size: 16px;
+  }
+
+  .contant a {
+    font-size: 17px;
+  }
+
+  .contant .col:hover {
+    width: 100%;
+    transform: translateY(-5px);
+  }
+
+  .contant .col:hover span {
+    display: none;
   }
 }
